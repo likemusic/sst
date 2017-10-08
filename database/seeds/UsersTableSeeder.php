@@ -12,5 +12,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory(App\User::class, 5)->create();
+        $user = new \App\User(['id' => 101, 'balance' => 1000]);
+        $user->save();
+
+        $user = new \App\User(['id' => 205, 'balance' => 1000]);
+        $user->save();
     }
 }
