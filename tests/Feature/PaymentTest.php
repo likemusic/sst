@@ -2,13 +2,16 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class PaymentTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testBalance()
     {
-        $response = $this->get(action('PaymentController@getBalance',['user' => 101]));
+        $response = $this->get('/balance?user=101');
         $response->assertStatus(200);
         $response->assertJson(['balance' => 1000]);
     }
